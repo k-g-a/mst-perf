@@ -1,0 +1,28 @@
+{
+  "compileOnSave": false,
+  "buildOnSave": false,
+  "exclude": [
+     "node_modules",
+     "dist"
+ ],
+  "compilerOptions": {
+    "module": "esnext",
+    "target": "es5",
+    "lib": ["dom", "es2017"],
+    "experimentalDecorators": true,
+    "sourceMap": true,
+    "inlineSourceMap": false,
+    "allowJs": true,
+    "allowSyntheticDefaultImports": true,
+    "moduleResolution": "node",
+    "rootDir": "src",
+    "forceConsistentCasingInFileNames": true,
+    "noImplicitReturns": true,
+    "noImplicitThis": true,
+    "noImplicitAny": false,
+    "strictNullChecks": false,
+    "suppressImplicitAnyIndexErrors": true,
+    "noUnusedLocals": false,
+    "noEmitHelpers": false
+  }
+}
