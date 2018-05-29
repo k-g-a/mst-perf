@@ -2,4 +2,3 @@
 /node_modules
 /.yarnrc
 /yarn-error.log
-/dist/*
