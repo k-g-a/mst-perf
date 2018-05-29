@@ -11,7 +11,7 @@ const VENDOR_DIR = path.join(__dirname, 'vendor');
 const TEMPLATES_DIR = path.join(__dirname, 'html');
 const NODE_MODULES_DIR = path.join(__dirname, 'node_modules');
 
-let widgetConfig = {
+let config = {
   context: SRC_DIR,
   entry: './index.ts',
   output: {
@@ -58,15 +58,15 @@ let widgetConfig = {
 };
 
 if (IS_DEV_VERSION) {
-  widgetConfig.devtool = 'source-map';
+  config.devtool = 'cheap-source-map';
 }
 
 if (IS_PROD_VERSION) {
-  widgetConfig.plugins.push(new webpack.optimize.UglifyJsPlugin({
+  config.plugins.push(new webpack.optimize.UglifyJsPlugin({
     output: {
       comments: false
     }
   }));
 }
 
-module.exports = widgetConfig;
+module.exports = config;

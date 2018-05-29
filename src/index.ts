@@ -1,5 +1,5 @@
 import {getParent, onAction, onSnapshot, types} from 'mobx-state-tree';
-
+import {computed, decorate, extendObservable, observable} from 'mobx';
 
 function getRandomArbitrary(min, max) {
   return Math.random() * (max - min) + min;
@@ -62,6 +62,9 @@ const Child = types
     const views = {
       get parent() {
         return getParent(self, 2);
+      },
+      get numCopy() {
+        return self.num;
       }
     };
 
@@ -70,6 +73,11 @@ const Child = types
         self.num = value;
       }
     };
+
+    // console.log('before', self.num, views.numCopy);
+    // self.num = 666;
+    // actions.setNum(666);
+    // console.log('after', self.num, views.numCopy);
 
     return {views, actions};
   });
@@ -124,19 +132,31 @@ function CreateOneParent() {
   return parent;
 }
 
-
 const test = CreateOneParent();
 
-onAction(test, (a) => console.log('onAction', a));
-onSnapshot(test, (s) => console.log('onSnapshot', s));
-
+onAction(test, a => console.log('onAction', a));
+onSnapshot(test, s => console.log('onSnapshot', s));
 
 test.setNum1(-1);
 test.children[0].setNum(-2);
 test.children[1].children[0].setNum(-3);
 
 
-export {
-  CreateOneParent
-}
+const ChildInMap = types.model('ChildInMap', {
+  id: types.identifier(types.string),
+  name: types.string,
+  surname: types.string,
+});
 
+const ParentWithMap = types
+  .model('ParentWithMap', {
+    items: types.map(ChildInMap)
+  })
+  .actions(self => ({
+    changeItem(payload: any) {
+      self.items.put(payload);
+    }
+  }));
+
+
+export {CreateOneParent};
