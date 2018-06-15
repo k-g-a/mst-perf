@@ -15,7 +15,7 @@
   "dependencies": {
     "babel-polyfill": "6.26.0",
     "mobx": "4.2.0",
-    "mobx-state-tree": "2.0.4"
+    "mobx-state-tree": "2.0.5"
   },
   "devDependencies": {
     "cross-env": "5.1.4",
