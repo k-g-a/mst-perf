@@ -13,7 +13,7 @@ const NODE_MODULES_DIR = path.join(__dirname, 'node_modules');
 
 let config = {
   context: SRC_DIR,
-  entry: './index.ts',
+  entry: ['./index.ts'],
   output: {
     path: OUTPUT_PATH,
     filename: 'index.js',
@@ -39,7 +39,7 @@ let config = {
   module: {
     rules: [
       {
-        test: /\.ts$/,
+        test: /\.(ts|tsx)$/,
         exclude: [NODE_MODULES_DIR],
         include: [SRC_DIR, VENDOR_DIR],
         use: {
@@ -50,6 +50,7 @@ let config = {
   },
   resolve: {
     modules: [SRC_DIR, VENDOR_DIR, NODE_MODULES_DIR],
+    extensions: [".tsx", ".jsx", ".js", ".ts", ".d.ts"]
   },
   resolveLoader: {
     modules: [NODE_MODULES_DIR]

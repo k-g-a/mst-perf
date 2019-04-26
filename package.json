@@ -13,16 +13,21 @@
     "build:prod": "cross-env NODE_ENV=production webpack -p"
   },
   "dependencies": {
+    "@skbkontur/react-ui": "0.41.0",
     "babel-polyfill": "6.26.0",
-    "mobx": "4.2.0",
-    "mobx-state-tree": "2.0.5"
+    "mobx": "4.9.4",
+    "mobx-state-tree": "3.14.0",
+    "react": "16.8.3",
+    "react-dom": "16.8.3"
   },
   "devDependencies": {
+    "@types/react": "16.8.5",
+    "@types/react-dom": "16.8.2",
     "cross-env": "5.1.4",
     "html-webpack-plugin": "2.30.1",
     "prettier": "1.11.1",
-    "webpack": "3.10.0",
     "ts-loader": "3.5.0",
-    "typescript": "2.8.3"
+    "typescript": "3.2.4",
+    "webpack": "3.10.0"
   }
 }
